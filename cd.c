@@ -130,32 +130,3 @@ void cd_previous(lists_shell *listssh)
 * @listssh: lists relevant (environ)
 * Return: no return
 */
-void cd_to_home(lists_shell *listssh)
-{
-	char *p_pwd, *home;
-	char pwd[PATH_MAX];
-
-	getcwd(pwd, sizeof(pwd));
-	p_pwd = _strdup(pwd);
-
-	home = _getenv("HOME", listssh->_environ);
-
-	if (home == NULL)
-	{
-		set_env("OLDPWD", p_pwd, listssh);
-		free(p_pwd);
-		return;
-	}
-
-	if (chdir(home) == -1)
-	{
-		get_error(listssh, 2);
-		free(p_pwd);
-		return;
-	}
-
-	set_env("OLDPWD", p_pwd, listssh);
-	set_env("PWD", home, listssh);
-	free(p_pwd);
-	listssh->status = 0;
-}
