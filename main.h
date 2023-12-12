@@ -172,4 +172,31 @@ int get_len(int n);
 char *aux_itoa(int n);
 int _atoi(char *s);
 
+char *strcat_cd(lists_shell *, char *, char *, char *);
+char *error_get_cd(lists_shell *listssh);
+char *error_not_found(lists_shell *listssh);
+char *error_exit_shell(lists_shell *listssh);
+
+char *error_get_alias(char **args);
+char *error_env(lists_shell *listssh);
+char *error_syntax(char **args);
+char *error_permission(char **args);
+char *error_path_126(lists_shell *listssh);
+
+int get_error(lists_shell *listssh, int eval);
+
+void get_sigint(int sig);
+
+void aux_help_env(void);
+void aux_help_setenv(void);
+void aux_help_unsetenv(void);
+void aux_help_general(void);
+void aux_help_exit(void);
+
+void aux_help(void);
+void aux_help_alias(void);
+void aux_help_cd(void);
+
+int get_help(lists_shell *listssh);
+
 #endif
